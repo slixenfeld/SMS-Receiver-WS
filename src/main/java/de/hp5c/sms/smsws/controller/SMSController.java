@@ -1,29 +1,31 @@
 package de.hp5c.sms.smsws.controller;
 
 import de.hp5c.sms.smsws.model.SMS;
+import de.hp5c.sms.smsws.service.SMSService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SMSController {
 
-    @Autowired
-    SMSController() {
+    SMSService service;
 
+    @Autowired
+    SMSController(SMSService service) {
+        this.service = service;
     }
 
     @CrossOrigin
     @PostMapping("/sms")
-    public String getSMS(@RequestBody SMS sms)
+    public SMS getSMS(@RequestBody SMS sms)
     {
-        System.out.println(sms.getText());
-        System.out.println(sms.getFrom());
-        System.out.println(sms.getReceivedStamp());
-        System.out.println(sms.getSentStamp());
-        System.out.println(sms.getSim());
-        return "it works";
+        return service.createSMS(sms);
+    }
+
+    @CrossOrigin
+    @GetMapping("/sms/{id}")
+    public SMS getSMS(@PathVariable(value = "id") Long id)
+    {
+        return service.getSMS(id);
     }
 }
