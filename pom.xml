@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>de.hp5c.sms</groupId>
 	<artifactId>sms-ws</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>sms-ws</name>
 	<description>SMS Receiver Microservice</description>
 	<properties>
