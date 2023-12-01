@@ -28,4 +28,13 @@ public class SMSController {
     {
         return service.getSMS(id);
     }
+
+    @CrossOrigin
+    @GetMapping("/sms/last")
+    public SMS getSMS()
+    {
+        return service.getLastSMS();
+    }
+
+
 }
