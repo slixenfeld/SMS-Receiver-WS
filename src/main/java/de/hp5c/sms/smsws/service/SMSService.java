@@ -23,4 +23,8 @@ public class SMSService {
     public SMS getSMS(Long id) {
         return repository.findById(id).orElse(null);
     }
+
+    public SMS getLastSMS() {
+        return repository.findTop().orElse(null);
+    }
 }
